@@ -1,0 +1,26 @@
+# Properties file for local/dev enviroment
+# You need to configure the environment variable in your IDE, more info in README.md
+# Overrides application.yml default properties
+
+spring:
+  datasource:
+    host: localhost:3306
+    db: freshProducts
+    username: ${LOCAL_DB_USER}
+    password: ${LOCAL_DB_PASS}
+    initialization-mode: always
+
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true
+    hibernate:
+      sql: debug
+      ddl-auto: create-drop # create-drop para crear las entidades, una vez creadas y finalizado el mododel cambiar a none
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+  sql:
+    init:
+      mode: always
+
+server:
+  port: 8080 # no cambiar en prod
